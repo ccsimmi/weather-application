@@ -12,14 +12,20 @@ export default function Content({
   return (
     <section className="flex flex-col">
       <div className="p-2">
-        {locationName && (
+        {locationName ? (
           <h1 className="text-center text-2xl font-semibold mb-2">
             {locationName}, {country}
           </h1>
+        ) : (
+          <h1 className="text-center text-xl font-semibold mb-2">
+            Search for a city
+          </h1>
         )}
-        <p className="text-center text-lg mb-2 capitalize">{description}</p>
+        <p className="text-center text-lg mb-2 capitalize">
+          {locationName ? description : ""}
+        </p>
         <p className="text-center text-7xl mb-4">
-          {parseInt(temp - 273.15)}
+          {locationName ? parseInt(temp - 273.15) : 0}
           <span className="text-lg">&#8451;</span>
         </p>
         <p className="text-center mb-2">{new Date().toDateString()}</p>
